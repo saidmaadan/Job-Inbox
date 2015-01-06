@@ -1,0 +1,7 @@
+<h1><%= pluralize(@jobs.size, "Job") %></h1>
+
+<ul>
+<% @jobs.each do |job| %>
+<li><%= job %></li>
+<% end %>
+</ul>
