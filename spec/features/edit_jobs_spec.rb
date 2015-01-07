@@ -10,6 +10,6 @@ describe "Edit listing" do
 
 		expect(current_path).to eq(edit_job_path(job))
 
-		# expect(find_field('Title').value).to eq(job.title)
+		expect(find_field('Title').value).to eq(job.title)
 	end
 end
