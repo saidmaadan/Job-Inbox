@@ -1,7 +1,21 @@
 <h1><%= pluralize(@jobs.size, "Job") %></h1>
 
-<ul>
+
 <% @jobs.each do |job| %>
-<li><%= job %></li>
+<article>
+<header>
+<h2><%= job.company %> - <%= job.title %></h2>
+</header>
+<p><%= truncate(job.description, length: 40, seperator: " ") %></p>
+<table>
+<tr>
+<th>Skill:</th>
+<td><%= job.skill %></td>
+</tr>
+<tr>
+<th>Location:></th>
+<td><%= job.location %></td>
+</tr>
+</table>
+</article>
 <% end %>
-</ul>

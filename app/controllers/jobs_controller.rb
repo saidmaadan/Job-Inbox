@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
 	def index
-		@jobs = ["1 Job", "2 Job", "3Job"]
+		@jobs = Job.all
 	end
 end
