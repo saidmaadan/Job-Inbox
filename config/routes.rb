@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  root "jobs#index"
   get "jobs" => "jobs#index"
+  get "jobs/:id" => "jobs#show", as: "job"
+  get "jobs/:id/edit" => "jobs#edit", as: "edit_job"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

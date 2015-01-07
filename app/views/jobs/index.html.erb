@@ -4,7 +4,7 @@
 <% @jobs.each do |job| %>
 <article>
 <header>
-<h2><%= job.company %> - <%= job.title %></h2>
+<h2><%= job.company %> - <%= link_to(job.title, job_url(job)) %></h2>
 </header>
 <p><%= truncate(job.description, length: 40, seperator: " ") %></p>
 <table>
@@ -13,7 +13,7 @@
 <td><%= job.skill %></td>
 </tr>
 <tr>
-<th>Location:></th>
+<th>Location:</th>
 <td><%= job.location %></td>
 </tr>
 </table>
