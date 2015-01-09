@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106234614) do
+ActiveRecord::Schema.define(version: 20150108231727) do
 
   create_table "jobs", force: true do |t|
     t.string   "company"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20150106234614) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "industry"
+    t.string   "company_size"
+    t.string   "website"
+    t.text     "key_responsibility"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "country"
+    t.string   "salary"
+    t.string   "salary_rate"
+    t.string   "employment_type"
+    t.string   "experience"
+    t.string   "relocation"
+    t.string   "travel"
+    t.text     "other_pay"
+    t.text     "job_link"
+    t.text     "company_description"
   end
 
 end

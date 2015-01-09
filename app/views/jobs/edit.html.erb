@@ -1,15 +1,3 @@
 <h1><%= @job.title %></h1>
 
-<%= form_for(@job) do |f| %>
-<p><%= f.label :company, "Company Name" %>: 
-<%= f.text_field :company %></p>
-<p><%= f.label :title, "Job Title" %>: 
-<%= f.text_field :title %></p>
-<p><%= f.label :description %>: 
-<%= f.text_area :description, cols: 45, rows: 7 %></p>
-<p><%= f.label :skill %>: 
-<%= f.text_field :skill %></p>
-<p><%= f.label :location %>: 
-<%= f.text_field :location %></p>
-<%= f.submit %>
-<% end %> 
+<%= render "form" %>
