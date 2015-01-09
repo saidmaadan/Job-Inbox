@@ -28,6 +28,12 @@ class JobsController < ApplicationController
 		redirect_to @job
 	end
 
+	def destroy
+		@job = Job.find(params[:id])
+		@job.destroy
+		redirect_to jobs_url
+	end
+
 	private
 	def job_params
 		params.require(:job).permit(:title,:company,:description,
