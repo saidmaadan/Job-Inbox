@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
 
 	def index
-		@jobs = Job.all
+		@jobs = Job.recent
 	end
 
 	def show
@@ -14,8 +14,12 @@ class JobsController < ApplicationController
 
 	def update
 		@job = Job.find(params[:id])
-		@job.update(job_params)
-		redirect_to @job
+		if @job.update(job_params)
+			flash[:notice]='Job updated successfully'
+		  redirect_to @job
+		else
+			render :edit
+		end
 	end
 
 	def new
@@ -24,14 +28,17 @@ class JobsController < ApplicationController
 
 	def create
 		@job = Job.new(job_params)
-		@job.save
-		redirect_to @job
+		if @job.save
+		 redirect_to @job, notice: "Job successfully created!"
+		else
+			render :new
+		end
 	end
 
 	def destroy
 		@job = Job.find(params[:id])
 		@job.destroy
-		redirect_to jobs_url
+		redirect_to jobs_url, alert: "Job has been deleted"
 	end
 
 	private

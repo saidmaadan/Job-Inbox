@@ -8,6 +8,11 @@ def job_attributes(overrides = {})
 		 creative, efficient and effective solutions to deploy 
 		 and manage technologies for our global market.",
 		 skill: "Htlm, css, Ruby, Rails",
-		 location: "Austin"
+		 location: "Austin",
+		 state: "NYC",
+	   country: "USA",
+	   experience: "Mid-level",
+	   employment_type: "Full Time",
+	   job_link: "https://www.app-cubator.com/jobs/12-software-engineer-tools-developer"
 	}.merge(overrides)
 end
