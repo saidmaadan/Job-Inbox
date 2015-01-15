@@ -16,3 +16,11 @@ def job_attributes(overrides = {})
 	   job_link: "https://www.app-cubator.com/jobs/12-software-engineer-tools-developer"
 	}.merge(overrides)
 end
+
+def employer_attributes(overrides = {})
+	{
+		name: "Employer Name",
+		email: "employer@example.com",
+		password: "password",
+		password_confirmation: "password"
+	}.merge(overrides)
