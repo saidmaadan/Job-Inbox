@@ -20,7 +20,18 @@ end
 def employer_attributes(overrides = {})
 	{
 		name: "Employer Name",
+		username: "myusername",
 		email: "employer@example.com",
+		password: "password",
+		password_confirmation: "password"
+	}.merge(overrides)
+end
+
+def candidate_attributes(overrides = {})
+	{
+		name: "Candidate Name",
+		username: "myusername",
+		email: "candidate@example.com",
 		password: "password",
 		password_confirmation: "password"
 	}.merge(overrides)

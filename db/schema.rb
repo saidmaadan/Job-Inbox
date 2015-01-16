@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115231940) do
+ActiveRecord::Schema.define(version: 20150116141513) do
+
+  create_table "candidates", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+    t.text     "about"
+    t.text     "accomplish"
+    t.text     "powerpoint"
+    t.text     "specialization"
+    t.string   "location"
+    t.string   "sex"
+    t.string   "phone"
+    t.string   "school"
+    t.string   "work"
+    t.string   "marital"
+    t.string   "github"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "dribbble"
+    t.string   "facebook"
+    t.string   "degree"
+    t.string   "start_year"
+    t.string   "grad_year"
+  end
 
   create_table "employers", force: true do |t|
     t.string   "name"

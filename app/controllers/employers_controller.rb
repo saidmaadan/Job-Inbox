@@ -4,6 +4,10 @@ class EmployersController < ApplicationController
 		@employers = Employer.all 
 	end
 
+	def show
+		@employer = Employer.find(params[:id])
+	end
+
 	def new
 		@employer = Employer.new
 	end
