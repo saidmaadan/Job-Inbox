@@ -95,3 +95,21 @@ describe 'Candidate' do
 		expect(candidate.password_digest.present?).to eq true
 	end
 end
+
+describe "Authentication" do
+
+  it "returns non-true value if the email does not match" do
+  	@candidate = Candidate.create!(candidate_attributes)
+    expect(Candidate.authenticate("notmatch", @candidate.password)).not_to eq true
+  end
+
+  it "returns non-true value if the password does not match" do
+  	@candidate = Candidate.create!(candidate_attributes)
+    expect(Candidate.authenticate(@candidate.email, "notmatch")).not_to eq true
+  end
+
+  it "returns the candidate if the email and password match" do
+  	@candidate = Candidate.create!(candidate_attributes)
+    expect(Candidate.authenticate(@candidate.email, @candidate.password)).to eq(@candidate)
+  end
+end

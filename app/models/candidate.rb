@@ -11,5 +11,10 @@ class Candidate < ActiveRecord::Base
   validates :username, presence: true,
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
-       
+ 
+   def self.authenticate(email_or_username,password)
+  	candidate = Candidate.find_by(email:email_or_username) || Candidate.find_by(username: email_or_username)
+  	candidate && candidate.authenticate(password)
+  end
+      
 end

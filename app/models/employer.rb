@@ -8,9 +8,14 @@ class Employer < ActiveRecord::Base
                   format: /\A\S+@\S+\z/,
                   uniqueness: { case_sensitive: false }
 
-  # validates :username, presence: true,
-  #                    format: /\A[A-Z0-9]+\z/i,
-  #                    uniqueness: { case_sensitive: false }
+  validates :username, presence: true,
+                     format: /\A[A-Z0-9]+\z/i,
+                     uniqueness: { case_sensitive: false }
        
+
+  def self.authenticate(email_or_username,password)
+  	employer = Employer.find_by(email:email_or_username) || Employer.find_by(username: email_or_username)
+  	employer && employer.authenticate(password)
+  end
 
 end

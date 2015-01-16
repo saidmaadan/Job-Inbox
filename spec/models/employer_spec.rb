@@ -95,3 +95,21 @@ describe 'Employer' do
 		expect(employer.password_digest.present?).to eq true
 	end
 end
+
+describe "Authentication" do
+
+  it "returns non-true value if the email does not match" do
+  	@employer = Employer.create!(employer_attributes)
+    expect(Employer.authenticate("notmatch", @employer.password)).not_to eq true
+  end
+
+  it "returns non-true value if the password does not match" do
+  	@employer = Employer.create!(employer_attributes)
+    expect(Employer.authenticate(@employer.email, "notmatch")).not_to eq true
+  end
+
+  it "returns the employer if the email and password match" do
+  	@employer = Employer.create!(employer_attributes)
+    expect(Employer.authenticate(@employer.email, @employer.password)).to eq(@employer)
+  end
+end
