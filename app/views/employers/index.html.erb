@@ -1,0 +1,30 @@
+<div class='container'>
+<div class='row'>
+<div class='row'>
+
+<% if @employers.any? %>
+<% @employers.in_groups_of(4) do |group| %>
+<div class='row'>
+<% group.each do |employer| %>
+<% if employer %>
+<div class='col-md-3'>
+<div class='row'>
+<div class='col-md-4'>
+     <p><%#= profile_image_for(employer) %></p></div>
+  <div class='col-md-8'>
+      <h4><%= link_to employer.name, employer %></h4>
+      <h5><%= employer.email %></h5>
+      <h5><%= employer.company_name %></h5>
+      <h5><%= employer.state %></h5>
+      </div>
+</div><br>
+</div>
+<% end %>
+<% end %>
+</div>
+<% end %>
+<% end %>
+
+
+</div>
+</div>

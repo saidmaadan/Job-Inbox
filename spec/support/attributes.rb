@@ -24,3 +24,4 @@ def employer_attributes(overrides = {})
 		password: "password",
 		password_confirmation: "password"
 	}.merge(overrides)
+end

@@ -47,7 +47,7 @@ describe 'Employer' do
 	it "valid with example attributes" do
 		employer = Employer.new(employer_attributes)
 
-		expect(user.valid?).to eq true
+		expect(employer.valid?).to eq true
 	end
 
 	it "has a password" do
@@ -56,14 +56,6 @@ describe 'Employer' do
 		employer.valid?
 
 		expect(employer.errors[:password].any?).to eq true
-	end
-
-	it "has a password confirmation" do
-		employer = Employer.new(password_confirmation: "")
-
-		employer.valid?
-
-		expect(employer.errors[:password_confirmation].any?).to eq true
 	end
 
 	it "has password as well as password confirmation" do
@@ -84,7 +76,7 @@ describe 'Employer' do
 
 
 	it "has matched password and password confirmation" do 
-		employer = Employer.new(pasword: "password", password_confirmation: "password")
+		employer = Employer.create!(employer_attributes(password: "password", password_confirmation: "password"))
 
 		expect(employer.valid?).to eq true
 	end
@@ -103,11 +95,3 @@ describe 'Employer' do
 		expect(employer.password_digest.present?).to eq true
 	end
 end
-
-
-
-
-
-
-
-

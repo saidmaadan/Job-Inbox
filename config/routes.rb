@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "signup" => "employers#new"
+  resources :employers
+
   root "jobs#index"
   # get "jobs" => "jobs#index"
   # get "jobs/:id" => "jobs#show", as: "job"
