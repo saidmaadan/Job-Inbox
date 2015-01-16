@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get "candidates" => "candidates#new", as: "signup"
   resources :candidates
 
-  get "signup" => "employers#new"
+  get "employers" => "employers#new", as: "register"
   resources :employers 
     
 
