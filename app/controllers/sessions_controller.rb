@@ -18,4 +18,10 @@ class SessionsController < ApplicationController
 			render :new
 		end	
 	end
+
+	def destroy
+		redirect_to root_url, notice: "You have signed out!"
+		if session[:candidate_id] = nil || session[:employer_id] = nil
+	  end
+	end
 end

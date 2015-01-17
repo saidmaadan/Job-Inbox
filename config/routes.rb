@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get "signin" => "sessions#new"
   resource :session
-  get "candidates" => "candidates#new", as: "signup"
+  get "signup" => "candidates#new", as: "signup"
   resources :candidates
 
-  get "employers" => "employers#new", as: "register"
+  get "register" => "employers#new", as: "register"
   resources :employers 
     
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # get "jobs/:id" => "jobs#show", as: "job"
   # get "jobs/:id/edit" => "jobs#edit", as: "edit_job"
   # patch "jobs/:id" => "jobs#update"
-
+  get "jobs/post" => "jobs#new"
   resources :jobs
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -28,7 +28,8 @@ class EmployersController < ApplicationController
 	def create
 		@employer = Employer.new(employer_params)
 		if @employer.save
-			redirect_to @employer
+			session[:employer_id] = @employer.index
+			redirect_to @employer, notice: "Thanks for signing up as employer!"
 		else
 			render :new
 		end
@@ -37,7 +38,8 @@ class EmployersController < ApplicationController
 	def destroy
 		@employer = Employer.find(params[:id])
 		@employer.destroy
-		redirect_to root_path
+		session[:employer_id] = nil
+		redirect_to root_path, alert: "Account has been deleted, sorry to see you going!"
 	end
 
 	private

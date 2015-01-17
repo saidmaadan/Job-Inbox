@@ -5,4 +5,4 @@
   <h4><%= @employer.email %></h4>
 </div>
 </div>
-
+<%= link_to "Edit", edit_employer_path(@employer) %> | <%= link_to 'Delete Account', employer_path(@employer), method: :delete, data: {confirm: "Are You Sure?"} %>

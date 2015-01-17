@@ -15,7 +15,8 @@ class CandidatesController < ApplicationController
 	def create
 		@candidate = Candidate.new(candidate_params)
 		if @candidate.save
-			redirect_to @candidate
+			session[:candidate_id] = @candidate.id
+			redirect_to @candidate, notice: "Thanks for signing up as candidate"
 		else
 			render :new
 		end
@@ -33,6 +34,14 @@ class CandidatesController < ApplicationController
 			render :edit
 		end
 	end
+
+	def destroy
+		@candidate = Candidate.find(params[:id])
+		@candidate.destroy
+		session[:candidate_id] = nil
+		redirect_to root_path, alert: "Account has been deleted, sorry to see you going!"
+	end
+
 
 	private
 

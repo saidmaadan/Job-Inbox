@@ -12,11 +12,11 @@
   <fieldset>
 
       <p class="required">
-
+        <%= label_tag :email %><br>
         <%= text_field_tag :email, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
       </p>
       <p class="required">
-
+      <%= label_tag :password %><br>
         <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password" %>
       </p>
 
@@ -26,7 +26,7 @@
   </fieldset>
 <% end %>
 <p>
-  No account yet? Sign up as <%= link_to ' Candidate!', signup_path %> or  <%= link_to 'Employers!', register_path %>
+  No account yet? Sign up as <%= link_to ' Candidate!', signup_path %> or  <%= link_to 'Employer!', register_path %>
 </p>
 </div>
 </div>
