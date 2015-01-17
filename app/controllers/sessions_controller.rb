@@ -7,12 +7,14 @@ class SessionsController < ApplicationController
 		if employer = Employer.authenticate(params[:email], params[:password])
 			session[:employer_id] = employer.id
 			flash[:notice] = "Welcome back, #{employer.name}!"
-			redirect_to employer
+			redirect_to(session[:intended_url] || employer)
+			session[:intended_url] = nil
 		elsif
 			candidate = Candidate.authenticate(params[:email], params[:password])
 			session[:candidate_id] = candidate.id
 			flash[:notice] = "Welcome back, #{candidate.name}!"
-			redirect_to candidate
+			redirect_to(session[:intended_url] || candidate)
+			session[:intended_url] = nil
 		else
 			flash.now[:alert] = "Invalid email/password combination!"
 			render :new

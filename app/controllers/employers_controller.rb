@@ -1,4 +1,6 @@
 class EmployersController < ApplicationController
+	before_action :require_signin, expect: [:new, :create]
+	before_action :require_correct_employer, only: [:edit, :update, :destroy]
 
 	def index
 		@employers = Employer.all 
@@ -43,6 +45,12 @@ class EmployersController < ApplicationController
 	end
 
 	private
+
+	def require_correct_employer
+		@employer = Employer.find(params[:id])
+		 #unless current_employer== @employer
+			redirect_to root_url unless current_employer?(@employer)
+	end
 
 	def employer_params
 		params.require(:employer).permit(:name, :email, :password, :password_confirmation, :username,:about,:state,:city,

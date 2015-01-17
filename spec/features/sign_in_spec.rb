@@ -18,8 +18,8 @@ describe "Sign In" do
 
 		click_link 'Sign In'
 
-		# fill_in "Email", with: candidate.email
-		# fill_in "Password", with: candidate.password
+		fill_in "Email", with: candidate.email
+		fill_in "Password", with: candidate.password
 
 		click_button 'Sign In'
 
@@ -33,8 +33,8 @@ describe "Sign In" do
 
 	  click_link 'Sign In'
 
-	  # fill_in "Email", with: candidate.email
-	  # fill_in "Password", with: "un match password"
+	  fill_in "Email", with: candidate.email
+	  fill_in "Password", with: "un match password"
 
 	  click_button 'Sign In'
 
@@ -48,8 +48,8 @@ describe "Sign In" do
 
 		click_link 'Sign In'
 
-		# fill_in "Email", with: employer.email
-		# fill_in "Password", with: employer.password
+		fill_in "Email", with: employer.email
+		fill_in "Password", with: employer.password
 
 		click_button 'Sign In'
 
@@ -63,12 +63,36 @@ describe "Sign In" do
 
 	  click_link 'Sign In'
 
-	   # fill_in "Email", with: employer.email
-	   # fill_in "Password", with: "un match password"
+	   fill_in "Email", with: employer.email
+	   fill_in "Password", with: "un match password"
 
 	  click_button 'Sign In'
 
 	  expect(page).to have_text('Invalid')
+	end
+
+	it "redirects to clicked url" do
+	  candidate = Candidate.create!(candidate_attributes)
+
+	  visit candidates_url
+
+	  expect(current_path).to eq(new_session_path)
+
+	  sign_in(candidate)
+
+	  expect(current_path).to eq(candidates_path)
+	end
+
+	it "redirects to clicked url" do
+	  employer = Employer.create!(employer_attributes)
+
+	  visit employers_url
+
+	  expect(current_path).to eq(new_session_path)
+
+	  sign_in(employer)
+
+	  expect(current_path).to eq(employers_path)
 	end
 end
 

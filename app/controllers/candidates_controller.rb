@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+	before_action :require_signin, expect: [:new, :create]
+	before_action :require_correct_candidate, only: [:edit, :update, :destroy]
 
 	def index
 		@candidates = Candidate.all 
@@ -44,6 +46,11 @@ class CandidatesController < ApplicationController
 
 
 	private
+
+	def require_correct_candidate
+		@candidate = Candidate.find(params[:id])
+			redirect_to root_url unless current_candidate?(@candidate)
+		end
 
 	def candidate_params
 		params.require(:candidate).permit(:name,:email,:password,:password_confirmation,:username,:about, :accomplish, :powerpoint, :specialization, :location, :sex, :phone, :school, :work, :marital, :video, :github, :twitter, :linkedin, :dribbble, :facebook, :degree, :start_year, :grad_year)

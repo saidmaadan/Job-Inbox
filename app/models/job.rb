@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
 
 	validates :title, :experience, :employment_type, :location, 
-  :state, :country, :job_link, presence: true
+   :job_link, presence: true
   validates :description, length: { minimum: 25 }
 
   INDUSTRY = ['Accounting', 'Airlines/Aviation', "Alternative Disputs Resolution", "Alternative Medicine", "Animation", "Apparel & Fashion", 
