@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 describe "Create new job" do 
+	
 	it "create new job, save and redirect to job details page" do 
-        
+    employer = Employer.create!(employer_attributes) 
+    sign_in(employer)
+
 		visit jobs_url
 
 		click_link "Post a Job"

@@ -1,6 +1,7 @@
 class CandidatesController < ApplicationController
-	before_action :require_signin, expect: [:new, :create]
-	before_action :require_correct_candidate, only: [:edit, :update, :destroy]
+	before_action :require_signin, except: [:new, :create]
+	before_action :require_correct_candidate, only: [:edit, :update]
+	before_action :require_admin, only: [:destroy]
 
 	def index
 		@candidates = Candidate.all 
@@ -40,7 +41,7 @@ class CandidatesController < ApplicationController
 	def destroy
 		@candidate = Candidate.find(params[:id])
 		@candidate.destroy
-		session[:candidate_id] = nil
+		#session[:candidate_id] = nil
 		redirect_to root_path, alert: "Account has been deleted, sorry to see you going!"
 	end
 

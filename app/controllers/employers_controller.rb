@@ -1,6 +1,7 @@
 class EmployersController < ApplicationController
-	before_action :require_signin, expect: [:new, :create]
-	before_action :require_correct_employer, only: [:edit, :update, :destroy]
+	before_action :require_signin, except: [:new, :create]
+	before_action :require_correct_employer, only: [:edit, :update]
+	before_action :require_admin, only: [:destroy]
 
 	def index
 		@employers = Employer.all 
@@ -40,7 +41,7 @@ class EmployersController < ApplicationController
 	def destroy
 		@employer = Employer.find(params[:id])
 		@employer.destroy
-		session[:employer_id] = nil
+		#session[:employer_id] = nil
 		redirect_to root_path, alert: "Account has been deleted, sorry to see you going!"
 	end
 
@@ -51,6 +52,8 @@ class EmployersController < ApplicationController
 		 #unless current_employer== @employer
 			redirect_to root_url unless current_employer?(@employer)
 	end
+
+	helper_method :require_correct_employer
 
 	def employer_params
 		params.require(:employer).permit(:name, :email, :password, :password_confirmation, :username,:about,:state,:city,

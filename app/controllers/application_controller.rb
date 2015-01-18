@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_candidate
-		@current_candidate = Candidate.find(session[:candidate_id]) if session[:candidate_id]
+		@current_candidate ||= Candidate.find(session[:candidate_id]) if session[:candidate_id]
 	end
 
 	def current_employer
-		@current_employer = Employer.find(session[:employer_id]) if session[:employer_id]
+		@current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
 	end
 
 	helper_method :current_candidate, :current_employer
@@ -32,4 +32,19 @@ class ApplicationController < ActionController::Base
 
 	helper_method :current_candidate?, :current_employer?
 
+	def require_admin
+	  unless current_candidate_admin? || current_employer_admin?
+	    redirect_to root_url, alert: "Unauthorized access!"
+	  end
+	end
+
+	def current_employer_admin?
+	  current_employer && current_employer.admin?
+	end
+
+	def current_candidate_admin?
+	  current_candidate && current_candidate.admin?
+	end
+
+	helper_method :current_employer_admin?, :current_candidate_admin?
 end

@@ -6,4 +6,9 @@
 </div>
 </div>
 
-<%= link_to "Edit", edit_candidate_path(@candidate) %> | <%= link_to 'Delete Account', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
+<% if current_candidate?(@candidate) %>
+<%= link_to "Edit", edit_candidate_path(@candidate) %> | 
+<% end %>
+<% if current_candidate_admin? %>
+<%= link_to 'Delete Account', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
+<% end %>

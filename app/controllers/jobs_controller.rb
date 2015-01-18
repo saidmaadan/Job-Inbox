@@ -1,4 +1,7 @@
 class JobsController < ApplicationController
+	before_action :require_signin, except: [:index, :show]
+	#before_action :correct_employer, only: [:edit, :update]
+	before_action :require_admin, only: [:destroy]
 
 	def index
 		@jobs = Job.recent

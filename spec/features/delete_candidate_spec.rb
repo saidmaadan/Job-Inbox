@@ -2,10 +2,16 @@ require "rails_helper"
 
 describe "Destroy Candidate" do 
 
+	before do
+    admin = Candidate.create!(candidate_attributes(admin: true))
+
+    sign_in(admin)
+  end
+
 	it "destroy and sign out the candidate" do 
 		candidate = Candidate.create!(candidate_attributes)
 
-		sign_in(candidate)
+		# sign_in(candidate)
 
 		visit candidate_path(candidate)
 
