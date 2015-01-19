@@ -5,6 +5,19 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # def correct_employer_job
+  # 	@current_employer = Employer.find(session[:employer_id])
+  # 	correct_employer = @current_employer.jobs
+  # 	redirect_to root_url unless correct_employer?(@current_employer)
+  # end
+
+  # helper_method :correct_employer_job
+
+  # def correct_employer?(employer)
+  # 	@correct_employer == current_employer
+  # end
+  # helper_method :correct_employer?
+
   def require_signin
   	unless current_candidate || current_employer
   		session[:intended_url] = request.url

@@ -1,4 +1,6 @@
 class Employer < ActiveRecord::Base
+  has_many :jobs, dependent: :destroy
+
 	has_secure_password
 
 	validates :password, length: { minimum: 8, allow_blank: true }

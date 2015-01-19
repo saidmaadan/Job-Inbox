@@ -15,9 +15,9 @@
 </table>
 </article>
 
-<% if current_employer?(@employer) %>
+<%# if current_employer?(@employer) %>
 <%= link_to "Edit", edit_job_path(@job) %> 
-<% end %>
+<%# end %>
 <% if current_candidate_admin? || current_employer_admin? %>
 | <%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are You Sure?"} %>
 <% end %>

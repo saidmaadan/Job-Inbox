@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118005116) do
+ActiveRecord::Schema.define(version: 20150119185639) do
 
   create_table "candidates", force: true do |t|
     t.string   "name"
@@ -86,6 +86,9 @@ ActiveRecord::Schema.define(version: 20150118005116) do
     t.text     "other_pay"
     t.text     "job_link"
     t.text     "company_description"
+    t.integer  "employer_id"
   end
+
+  add_index "jobs", ["employer_id"], name: "index_jobs_on_employer_id"
 
 end

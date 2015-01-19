@@ -1,4 +1,5 @@
 class Job < ActiveRecord::Base
+  belongs_to :employer
 
 	validates :title, :experience, :employment_type, :location, 
    :job_link, presence: true

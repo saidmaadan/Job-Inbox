@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
+	#before_action :correct_employer_job, only: [:edit, :update]
 	#before_action :correct_employer, only: [:edit, :update]
 	before_action :require_admin, only: [:destroy]
 
@@ -45,6 +46,7 @@ class JobsController < ApplicationController
 	end
 
 	private
+
 	def job_params
 		params.require(:job).permit(:title,:company,:description,
 							:skill,:location,:industry,:company_size,:website,:key_responsibility,
